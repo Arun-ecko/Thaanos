@@ -1,1 +1,111 @@
-<p>category works!</p>
+<p>kasd</p>
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body {
+            font-family: Arial;
+            color: white;
+        }
+
+        .button {
+            display: inline-block;
+            padding: 15px 25px;
+            font-size: 24px;
+            cursor: pointer;
+            text-align: center;
+            text-decoration: none;
+            outline: none;
+            color: #fff;
+            background-color: #4CAF50;
+            border: none;
+            border-radius: 15px;
+            box-shadow: 0 9px #999;
+        }
+
+        .button:hover {
+            background-color: #3e8e41
+        }
+
+        .button:active {
+            background-color: #3e8e41;
+            box-shadow: 0 5px #666;
+            transform: translateY(4px);
+        }
+
+        .split {
+            height: 100%;
+            width: 50%;
+            position: fixed;
+            z-index: 1;
+            top: 0;
+            overflow-x: hidden;
+            padding-top: 20px;
+        }
+
+        .left {
+            left: 0;
+            background-color: black;
+        }
+
+        .right {
+            right: 0;
+            background-color: rgb(252, 105, 105);
+        }
+
+        .centered {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+        }
+
+        .centered img {
+            width: 150px;
+            border-radius: 50%;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="split left">
+        <div class="centered">
+            <img src="assets/images/men.png" alt="Avatar man">
+            <h4> <input type="button" class="button" (click)="sort($event);redirect() " href="/productlist" value="Men">
+            </h4>
+
+        </div>
+    </div>
+
+    <div class="split right">
+
+        <div class="centered">
+
+            <!-- <a href='javascript:;'  value="Women"  > -->
+            <img src="assets/images/women.png" value="Women" alt="Avatar man">
+            <h4> <input type="button" class="button" (click)="sort($event);redirect()" href="/productlist"
+                    value="Women"> </h4>
+
+            <!-- </a>  -->
+            <!-- <a (click)="sort($event)" value="Women">Women</a> -->
+
+        </div>
+        <!-- <ul>
+            <li *ngFor="let data of selecteddata">
+                <p>{{data.title}}</p>
+                <p><img style="height: 250px; width: 250px; " src={{data.image}}></p>
+                <p id="2">{{data.price}}</p>
+                <p id="3">{{data.size}}</p>
+            </li>
+        </ul> -->
+    </div>
+
+
+
+</body>
+
+</html>

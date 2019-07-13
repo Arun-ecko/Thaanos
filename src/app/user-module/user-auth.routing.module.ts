@@ -16,7 +16,21 @@ const routes: Routes = [
     },
     {
         path:'',redirectTo:'/home',pathMatch:'full'
-    }
+    },
+   
+    // {
+    //     path: 'category',
+    //     loadChildren: () => import('../shared/shared.module').then(mod => mod.SharedModule)
+    //   },
+    //   {
+    //     path: 'productList',
+    //     loadChildren: () => import('../shared/shared.module').then(mod => mod.SharedModule)
+    //   },
+    //   {
+    //     path: 'productDetail',
+    //     loadChildren: () => import('../shared/shared.module').then(mod => mod.SharedModule)
+    //   }
+
 ];
 
 @NgModule({

@@ -1,1 +1,19 @@
-<p>product-list works!</p>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    
+<ul>
+    <li *ngFor="let list of message ">
+      <p #name> {{list.For}}</p>
+      <p #title>{{list.title}}</p>
+      <p><img style="height: 250px; width: 250px; " src={{list.image}}></p>
+      <button class="btn btn-dark" (click)="addto(list);totalcartvalue(list.price)">
+        <h6 class="material-icons">Add To Cart</h6>
+        
+      </button>
+      <!-- <button (click)="setCart()">Get User value</button> -->
+    
+    </li>
+  
+    <app-cart></app-cart>
+      
+  <!-- <button (click)="insertdataToUser()">Add Now</button> -->
+  </ul>

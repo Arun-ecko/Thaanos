@@ -12,6 +12,7 @@ import {UserRoutingModule} from './user-auth.routing.module'
 import {FormsModule} from'@angular/forms'
 import { UserAuthService } from './user-auth.service';
 import {SharedModule} from '../shared/shared.module'
+import {ProductsModule} from '../products/products.module'
 
 
 @NgModule({
@@ -19,6 +20,7 @@ import {SharedModule} from '../shared/shared.module'
      UserRegisterComponent,
       UserLoginComponent, 
       UserHomeComponent,
+      
      ],
   imports: [
     CommonModule,
@@ -27,8 +29,9 @@ import {SharedModule} from '../shared/shared.module'
     AngularFirestoreModule,
     UserRoutingModule,
     FormsModule,
-    SharedModule
-   
+    SharedModule,
+    ProductsModule
+    
   ],
   exports:[UserAuthComponent,
     UserLoginComponent,
