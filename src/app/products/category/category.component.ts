@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {Router} from '@angular/router'
-import{ProductService} from '../product.service'
+import { Router } from '@angular/router';
+import { ProductService } from '../product.service';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-category',
@@ -8,17 +9,25 @@ import{ProductService} from '../product.service'
   styleUrls: ['./category.component.scss']
 })
 export class CategoryComponent implements OnInit {
-  selecteddata:any=[];
-  constructor(private productService: ProductService,private router:Router) { }
-  sort(val){
-    this.selecteddata=this.productService.sort(val);
-   this.productService.changeMessage(this.selecteddata) ;
-   }
-   redirect(){
-    this.router.navigate(['/productList']); 
-   }
-    ngOnInit() {
-      
+  selecteddata: any = [];
+  jsonArray: any = [];
+  constructor(private productService: ProductService, private router: Router, private httpservice: HttpClient) { }
+
+
+  ngOnInit() {
+    this.httpservice.get('./assets/shopping.json').subscribe(data => {
+      this.productService.ListData = data as string[];
+      console.log(this.productService.ListData);
+    });
+
   }
-  
+  filterCategory(val) {
+    console.log(val);
+    this.selecteddata = this.productService.filterCategory(val);
+    console.log(this.selecteddata);
+  }
+  redirect() {
+    this.router.navigate(['/productList']);
+
+  }
 }

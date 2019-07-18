@@ -1,1 +1,12 @@
-<p>product-detail works!</p>
+<li *ngFor="let Product of ProductDetail">
+    <p>{{Product.title}}</p>
+    <p><img style="height: 500px; width: 400px; " src={{Product.image}}></p>
+    <p>Price: ₹{{Product.price}}</p>
+    <p>Size:{{Product.size}}</p>
+    
+    <button class="btn btn-dark" (click)="addToCart(Product)">
+        <h6 class="material-icons">Add To Cart</h6>
+    </button>
+</li>
+
+<app-usercart class="right"></app-usercart> 

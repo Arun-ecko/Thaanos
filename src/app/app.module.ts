@@ -3,27 +3,27 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import {UserModuleModule} from './user-module/user-module.module';
+import {UserModuleModule} from './user/user.module';
 import {SharedModule} from './shared/shared.module';
-import {HttpClientModule} from '@angular/common/http'
+import {HttpClientModule} from '@angular/common/http';
+import {ProductsModule} from './products/products.module';
 
-
-import { UserAuthComponent } from './user-module/user-auth/user-auth.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-   
-  
+
+
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     UserModuleModule,
     HttpClientModule,
-    SharedModule
-    
-   
+    SharedModule,
+    ProductsModule,
+
+
   ],
   providers: [],
   bootstrap: [AppComponent]

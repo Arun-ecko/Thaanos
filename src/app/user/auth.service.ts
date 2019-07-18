@@ -4,18 +4,16 @@ import { AngularFirestore } from '@angular/fire/firestore';
 import { Router } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
 
-import { log } from 'util';
-
 @Injectable({
   providedIn: 'root'
 })
 export class UserAuthService {
-  private eventAuthError = new BehaviorSubject<string>("");
+  private eventAuthError = new BehaviorSubject<string>('');
   eventAuthError$ = this.eventAuthError.asObservable();
   newUser: any = [];
   constructor(private afauth: AngularFireAuth,
-    private database: AngularFirestore,
-    private router: Router) { }
+              private database: AngularFirestore,
+              private router: Router) { }
   getUserState() {
     return this.afauth.authState;
   }
@@ -28,9 +26,9 @@ export class UserAuthService {
         if (userCredential) {
           this.router.navigate(['/home']);
         }
-      })
+      });
   }
-  
+
 
   createUser(user) {
     console.log(user);
@@ -43,7 +41,7 @@ export class UserAuthService {
         this.insertNewUser(userCreds)
           .then(() => {
             this.router.navigate(['/home']);
-          })
+          });
       })
       .catch(error => {
         this.eventAuthError.next(error);
@@ -59,11 +57,11 @@ export class UserAuthService {
       Lastname: this.newUser.lastName,
       password: this.newUser.password
 
-    })
-    
+    });
+
 
   }
- 
+
   logout() {
     return this.afauth.auth.signOut();
   }
