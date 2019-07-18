@@ -4,12 +4,8 @@ import { environment } from 'src/environments/environment';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
-import { UserRegisterComponent } from '../user';
-import { UserLoginComponent } from '../user';
-import { UserHomeComponent } from '../user';
-import { UserRoutingModule } from '../user';
+import { UserLoginComponent, UserHomeComponent, UserAuthService, UserRegisterComponent, UserRoutingModule } from '../user';
 import { FormsModule } from '@angular/forms';
-import { UserAuthService } from '../user';
 import { SharedModule } from '../shared/shared.module';
 import { ProductsModule } from '../products/products.module';
 

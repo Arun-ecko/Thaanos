@@ -1,15 +1,15 @@
 import { Injectable, Input } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { AngularFireAuth } from '@angular/fire/auth';
-import { AngularFirestore } from '@angular/fire/firestore';
+import { AngularFirestore} from '@angular/fire/firestore';
 import { UserAuthService } from '../user/auth.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProductService {
-  ListData: any = [];
+  jsonArray: any = [];
   selectedItem: any = [];
   cartArray: any = [];
   // tslint:disable-next-line:ban-types
@@ -30,6 +30,7 @@ export class ProductService {
     // Behavior Subject for Displaying the selected item in a Detailed List
   private detailListSubject = new BehaviorSubject('');
   detailListSubject$ = this.detailListSubject.asObservable();
+
   constructor(private http: HttpClient,
               private afAuth: AngularFireAuth,
               private database: AngularFirestore,
@@ -46,8 +47,8 @@ export class ProductService {
 
   filterCategory(val) {
     console.log(val.target.value);
-    console.log(this.ListData);
-    this.selectedItem  = this.ListData.filter(data => {
+    console.log(this.jsonArray);
+    this.selectedItem  = this.jsonArray.filter(data => {
       return data.For === val.target.value;
     });
     this.categorySubject.next(this.selectedItem);
@@ -60,7 +61,12 @@ export class ProductService {
 
     this.display = localStorage.getItem(JSON.parse(JSON.stringify('Cart')));
     console.log(this.display);
+    console.log(this.cartArray);
     this.cartSubject.next(this.cartArray);
+    this.database.doc(`Users/Cart/`).set({
+      cart: this.cartArray
+    });
+    return this.cartArray;
   }
   totalcartvalue(price) {
     this.price = Number(price);

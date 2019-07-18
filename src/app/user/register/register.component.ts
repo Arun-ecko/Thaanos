@@ -15,7 +15,6 @@ export class UserRegisterComponent implements OnInit {
       this.authError = data;
     });
   }
-
   createUser(form) {
     this.authservice.createUser(form.value);
   }

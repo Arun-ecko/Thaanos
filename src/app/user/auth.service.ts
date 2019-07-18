@@ -10,7 +10,10 @@ import { BehaviorSubject } from 'rxjs';
 export class UserAuthService {
   private eventAuthError = new BehaviorSubject<string>('');
   eventAuthError$ = this.eventAuthError.asObservable();
+  private userSubject = new BehaviorSubject<string>('');
+  userSubject$ = this.userSubject.asObservable();
   newUser: any = [];
+  userId: string ;
   constructor(private afauth: AngularFireAuth,
               private database: AngularFirestore,
               private router: Router) { }
@@ -23,12 +26,12 @@ export class UserAuthService {
         this.eventAuthError.next(error);
       })
       .then(userCredential => {
+        console.log(userCredential);
         if (userCredential) {
           this.router.navigate(['/home']);
         }
       });
   }
-
 
   createUser(user) {
     console.log(user);
@@ -52,16 +55,13 @@ export class UserAuthService {
 
     console.log(this.newUser.email);
     return this.database.doc(`Users/${userCreds.user.uid}`).set({
-      Firstname: this.newUser.firstName,
+      firstName: this.newUser.firstName,
       email: this.newUser.email,
-      Lastname: this.newUser.lastName,
+      lastName: this.newUser.lastName,
       password: this.newUser.password
 
     });
-
-
   }
-
   logout() {
     return this.afauth.auth.signOut();
   }

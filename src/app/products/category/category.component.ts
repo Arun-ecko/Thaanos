@@ -16,8 +16,8 @@ export class CategoryComponent implements OnInit {
 
   ngOnInit() {
     this.httpservice.get('./assets/shopping.json').subscribe(data => {
-      this.productService.ListData = data as string[];
-      console.log(this.productService.ListData);
+      this.productService.jsonArray = data as string[];
+      console.log(this.productService.jsonArray);
     });
 
   }
