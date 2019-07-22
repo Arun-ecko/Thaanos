@@ -13,7 +13,7 @@ export class UserAuthService {
   private userSubject = new BehaviorSubject<string>('');
   userSubject$ = this.userSubject.asObservable();
   newUser: any = [];
-  userId: string ;
+  userId: string;
   constructor(private afauth: AngularFireAuth,
               private database: AngularFirestore,
               private router: Router) { }
@@ -52,7 +52,6 @@ export class UserAuthService {
 
   }
   insertNewUser(userCreds: firebase.auth.UserCredential) {
-
     console.log(this.newUser.email);
     return this.database.doc(`Users/${userCreds.user.uid}`).set({
       firstName: this.newUser.firstName,
@@ -61,7 +60,7 @@ export class UserAuthService {
       password: this.newUser.password
 
     });
-   }
+  }
   logout() {
     return this.afauth.auth.signOut();
   }

@@ -44,8 +44,6 @@ export class ProductService {
      return this.details;
   }
 
-
-
   filterCategory(val) {
     console.log(val.target.value);
     console.log(this.jsonArray);
@@ -54,13 +52,12 @@ export class ProductService {
     });
     this.categorySubject.next(this.selectedItem);
     return this.selectedItem;
+
   }
 
   doAdd(list) {
     this.cartArray.push(list);
     localStorage.setItem('Cart', JSON.stringify(this.cartArray));
-
-    this.display = localStorage.getItem(JSON.parse(JSON.stringify('Cart')));
     console.log(this.display);
     console.log(this.cartArray);
     this.cartSubject.next(this.cartArray);

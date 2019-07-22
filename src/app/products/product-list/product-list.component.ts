@@ -17,7 +17,6 @@ export class ProductListComponent implements OnInit {
   cartadd: any = [];
   totalcart: any = [];
   products: any = [];
-  product: Observable<any>;
   cartvalue: any;
   cartDetails: any = [];
   userId: string;
@@ -27,16 +26,24 @@ export class ProductListComponent implements OnInit {
               private db: AngularFirestore, private router: Router) { }
   ngOnInit() {
     this.productservice.categorySubject$.subscribe(gender => this.gender = gender);
-    // this.userauthservice.userSubject$.subscribe(userID => this.userId = userID);
+    this.db.collection('ProductList').doc('List').valueChanges()
+    .subscribe(data => {
+      this.products = data;
+      console.log(JSON.stringify(this.products));
+      this.cartDetails = Object.entries(this.products)[0][1];
+      console.log(this.cartDetails);
 
+
+
+    });
 
     this.afAuth.authState.subscribe((user) => {
       this.userId = user.uid;
       console.log('userID', this.userId);
       this.db.collection('Users').doc(`${this.userId}`).collection('Cart').doc('UserCart').valueChanges()
-      .subscribe(data => {
-        console.log(data);
-      });
+        .subscribe(data => {
+          console.log(data);
+        });
     });
     console.log('userID', this.userId);
 
@@ -47,10 +54,16 @@ export class ProductListComponent implements OnInit {
     console.log(this.userId);
     this.cartadd = this.productservice.doAdd(list);
     console.log(this.userId);
+    if (this.db.collection('Users').doc(`${this.userId}`) != null) {
     this.db.collection('Users').doc(`${this.userId}`).collection('Cart').doc('UserCart').set({
       cart: this.cartadd
     });
-
+  }
+    if (this.db.collection('Users').doc(`${this.userId}`) == null) {
+      this.db.collection('Users').doc('TempUser').collection('Cart').doc('UserCart').set({
+        cart: this.cartadd
+      });
+  }
   }
 
   getDetails(product) {

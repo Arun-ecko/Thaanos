@@ -16,8 +16,6 @@ export class UsercartComponent implements OnInit {
   display: any = [];
   userId: string;
   products: {};
-  product: Observable<any[]>;
-  docRef: any;
   cartItems: any = [];
 
   constructor(private productservice: ProductService, private afauth: AngularFireAuth,
@@ -43,8 +41,15 @@ export class UsercartComponent implements OnInit {
     });
   }
   removeProduct(cartItem: object) {
-    this.cartArray = this.productservice.removeItem(cartItem);
+
+    // this.cartArray = this.productservice.removeItem(cartItem);
     this.database.collection('Users').doc(`${this.userId}`).collection('Cart').doc('UserCart').update({cart: this.cartArray});
+
+    // this.database.collection('Users').doc('TempUser').collection('Cart').doc('UserCart').set({
+    //     cart: this.cartArray
+    //   });
+
+
   }
   getCartDetails() {
      }
