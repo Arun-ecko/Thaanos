@@ -34,7 +34,6 @@ export class UserAuthService {
   }
 
   createUser(user) {
-    console.log(user);
     this.afauth.auth.createUserWithEmailAndPassword(user.email, user.password)
       .then(userCreds => {
         this.newUser = user;
@@ -62,6 +61,7 @@ export class UserAuthService {
     });
   }
   logout() {
-    return this.afauth.auth.signOut();
+    return this.afauth.auth.signOut().then(() => { this.router.navigate(['/home']);
+    });
   }
 }

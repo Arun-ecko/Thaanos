@@ -1,18 +1,28 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
    integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+<head>
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<a href="#" id = "shopping">
+          <span class="glyphicon glyphicon-shopping-cart"></span> Shopping Cart
+        </a>
 <ul>
    <li *ngFor="let list of cartDetails ">
       <p #title> {{list.title}}</p>
       <p #name> Price: ₹ {{list.price}}</p>
       <p><img style="height: 250px; width: 250px; " src={{list.image}}></p>
-      <button class="btn btn-dark" (click)="addToCart(list);totalcartvalue(list.price)">
+      <button class="btn btn-dark" (click)="addToCart(list);showCartMessage();redirectToCart()">
          <h6 class="material-icons">Add To Cart</h6>
       </button>
       <button class="btn btn-dark" (click)="getDetails(list);redirectToDetails()">
          <h6 class="material-icons">View More</h6>
       </button>
    </li>
-    <app-usercart class="right"></app-usercart> 
+   <app-usercart class="right"></app-usercart>
 </ul>
 <ul>
    <li *ngFor="let price of cartDetails">

@@ -9,13 +9,10 @@ import { UserAuthService } from '../auth.service';
 })
 export class UserHomeComponent implements OnInit {
   user: firebase.User;
-
   constructor(private router: Router, private authservice: UserAuthService) { }
-
   ngOnInit() {
     this.authservice.getUserState().subscribe(user => {
       this.user = user;
-      console.log(user);
     });
   }
 login() {

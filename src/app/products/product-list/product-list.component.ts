@@ -5,7 +5,8 @@ import { AngularFirestore } from '@angular/fire/firestore';
 
 import { Router } from '@angular/router';
 import { UserAuthService } from 'src/app/user';
-import { Observable } from 'rxjs';
+import { ToastrService } from 'ngx-toastr';
+
 @Component({
   selector: 'app-product-list',
   templateUrl: './product-list.component.html',
@@ -17,33 +18,25 @@ export class ProductListComponent implements OnInit {
   cartadd: any = [];
   totalcart: any = [];
   products: any = [];
-  cartvalue: any;
   cartDetails: any = [];
   userId: string;
   constructor(private productservice: ProductService,
               private afAuth: AngularFireAuth,
-              private userauthservice: UserAuthService,
+              private toastr: ToastrService,
               private db: AngularFirestore, private router: Router) { }
   ngOnInit() {
     this.productservice.categorySubject$.subscribe(gender => this.gender = gender);
     this.db.collection('ProductList').doc('List').valueChanges()
     .subscribe(data => {
       this.products = data;
-      console.log(JSON.stringify(this.products));
       this.cartDetails = Object.entries(this.products)[0][1];
       console.log(this.cartDetails);
-
-
 
     });
 
     this.afAuth.authState.subscribe((user) => {
       this.userId = user.uid;
       console.log('userID', this.userId);
-      this.db.collection('Users').doc(`${this.userId}`).collection('Cart').doc('UserCart').valueChanges()
-        .subscribe(data => {
-          console.log(data);
-        });
     });
     console.log('userID', this.userId);
 
@@ -51,19 +44,30 @@ export class ProductListComponent implements OnInit {
   }
 
   addToCart(list) {
-    console.log(this.userId);
-    this.cartadd = this.productservice.doAdd(list);
-    console.log(this.userId);
-    if (this.db.collection('Users').doc(`${this.userId}`) != null) {
-    this.db.collection('Users').doc(`${this.userId}`).collection('Cart').doc('UserCart').set({
-      cart: this.cartadd
+
+
+    this.db.collection('Users').doc(`${this.userId}`).collection('Cart').add({
+      for: list.For,
+      image: list.image,
+      price: Number(list.price) ,
+      size: list.size,
+      title: list.title
+      } ).then(docRef => {this.db.collection('Users').doc(`${this.userId}`).collection ('Cart').doc(docRef.id).update({
+      for: list.For,
+      image: list.image,
+      price: Number(list.price) ,
+      size: list.size,
+      title: list.title,
+      id: docRef.id
+
     });
+
+  });
+
   }
-    if (this.db.collection('Users').doc(`${this.userId}`) == null) {
-      this.db.collection('Users').doc('TempUser').collection('Cart').doc('UserCart').set({
-        cart: this.cartadd
-      });
-  }
+
+  showCartMessage() {
+    this.toastr.success('Your Cart has been updated with 1 item');
   }
 
   getDetails(product) {
@@ -72,12 +76,8 @@ export class ProductListComponent implements OnInit {
   redirectToDetails() {
     this.router.navigate(['/productDetail']);
   }
-  reDirectToCart() {
+  redirectToCart() {
     this.router.navigate(['/cart']);
-  }
-  totalcartvalue(total) {
-    console.log(total);
-    this.totalcart = this.productservice.totalcartvalue(total);
   }
 
 

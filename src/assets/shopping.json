@@ -2,7 +2,7 @@
     { 
         "For": "Men",
         "title":"BASICS Slim Fit Maritime Navy Checks Shirt",
-        "price":"999",
+        "price":999,
         "image":"https://images-na.ssl-images-amazon.com/images/I/81uz46y2YrL._UL1500_.jpg",
         "size" : "XL"
          
@@ -10,7 +10,7 @@
     { 
         "For": "Men",
         "title":"Louis Philippe Sport Men's Checkered Slim fit Casual Shirt",
-        "price":"1439",
+        "price":1439,
         "image":"https://images-na.ssl-images-amazon.com/images/I/910AE6GN1ML._UL1500_.jpg",
         "size" : "L"
          
@@ -18,7 +18,7 @@
     { 
         "For": "Men",
         "title":"IndoPrimo Men's Cotton Casual Shirt for Men Full Sleeves",
-        "price":"699",
+        "price":699,
         "image":"https://images-na.ssl-images-amazon.com/images/I/61-TuCrKZ7L._UX569_.jpg",
         "size" : "XL"
          
@@ -26,7 +26,7 @@
     { 
         "For": "Men",
         "title":"Maniac Men's Fullsleeve Round Neck All Over Printed Navy Cotton Tshirt",
-        "price":"489",
+        "price":489,
         "image":"https://images-na.ssl-images-amazon.com/images/I/910wbkVL4vL._UL1500_.jpg",
         "size" : "M"
          
@@ -34,7 +34,7 @@
     { 
         "For": "Women",
         "title":"Rangmanch by Pantaloons Women's Straight Salwar Suit Set",
-        "price":"1634",
+        "price":1634,
         "image":"https://images-na.ssl-images-amazon.com/images/I/81g6r68fzAL._UL1500_.jpg",
         "size" : "L"
          
@@ -42,7 +42,7 @@
     { 
         "For": "Women",
         "title":"Idalia solid kurta with palazzo pants",
-        "price":"1295",
+        "price":1295,
         "image":"https://images-na.ssl-images-amazon.com/images/I/612e1TjJ5qL._UL1500_.jpg",
         "size" : "XL"
          
@@ -50,7 +50,7 @@
     { 
         "For": "Women",
         "title":"Varanga Women's Straight Salwar Suit Set",
-        "price":"1650",
+        "price":1650,
         "image":"https://images-na.ssl-images-amazon.com/images/I/81R6htAefEL._UL1500_.jpg",
         "size" : "L"
          
@@ -58,14 +58,14 @@
     { 
         "For": "Women",
         "title":"Sanganeri Kurti Women's Rayon Kurta With Palazzo Set",
-        "price":"949",
+        "price":949,
         "image":"https://images-na.ssl-images-amazon.com/images/I/71EBh6ztgDL._UL1500_.jpg",
         "size" : "XL"
          
     },{ 
         "For": "Women",
         "title":"Jaipur Kurti Women's Cotton Straight Kurta",
-        "price":"1,121",
+        "price":1121,
         "image":"https://images-na.ssl-images-amazon.com/images/I/71B3AXRYQ1L._UL1400_.jpg",
         "size" : "S"
          
@@ -73,7 +73,7 @@
     { 
         "For": "Women",
         "title":"Ziyaa Saree Style Drape Dupatta Kurta and Palazzo set ",
-        "price":"1,154",
+        "price":1154,
         "image":"https://images-na.ssl-images-amazon.com/images/I/51cv1GHTIAL._UL1000_.jpg",
         "size" : "XL"
          
