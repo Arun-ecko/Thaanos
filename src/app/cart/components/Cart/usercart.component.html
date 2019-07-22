@@ -1,7 +1,8 @@
 <ul>
-        <li *ngFor="let cart of cartArray ">
+        <li *ngFor="let cart of cartItems ">
             <p></p>
             <p>{{cart.title}} </p>
             <p>{{cart.price}}</p>
-            <button type="button" (click)="removeProduct(cart.title)">Remove</button>
+            <button type="button" (click)="removeProduct(cart.title);getCartDetails()">Remove</button>
         </li>
+      

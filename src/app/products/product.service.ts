@@ -45,6 +45,7 @@ export class ProductService {
   }
 
 
+
   filterCategory(val) {
     console.log(val.target.value);
     console.log(this.jsonArray);

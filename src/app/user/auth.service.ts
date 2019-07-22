@@ -39,7 +39,7 @@ export class UserAuthService {
       .then(userCreds => {
         this.newUser = user;
         userCreds.user.updateProfile({
-          displayName: user.firstname + ' ' + user.lastname
+          displayName: user.firstName + ' ' + user.lastName
         });
         this.insertNewUser(userCreds)
           .then(() => {
@@ -61,7 +61,7 @@ export class UserAuthService {
       password: this.newUser.password
 
     });
-  }
+   }
   logout() {
     return this.afauth.auth.signOut();
   }
